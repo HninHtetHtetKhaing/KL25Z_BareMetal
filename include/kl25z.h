@@ -38,6 +38,15 @@ typedef struct {
     volatile uint32_t PDDR;  // Data Direction
 } GPIO_Type;
 
+#define NVIC_ISER_BASE 0xE000E100  // Interrupt Set Enable Register
+typedef struct {
+    volatile uint32_t ISER[1];  // Enable interrupts
+} NVIC_Type;
+#define NVIC ((NVIC_Type*)NVIC_ISER_BASE)
+
+// IRQ Numbers (KL25Z-specific)
+#define PORTA_IRQn 30  // IRQ number for PORTA
+
 // =============================================
 // Peripheral Instances
 // =============================================
@@ -51,6 +60,9 @@ typedef struct {
 // =============================================
 // Bit Manipulation Macros
 // =============================================
+/ PORT Interrupt Configuration (RM p.185)
+#define PORT_PCR_IRQC(x)    ((x) << 16)  // Interrupt configuration field
+#define IRQC_FALLING_EDGE   0x0A         // 10 = Falling edge trigger
 #define BIT(n)          (1UL << (n))
 #define PIN_MUX_GPIO    0x100  // Alternative 1 (GPIO) for PCR registers
 
