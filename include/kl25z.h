@@ -10,8 +10,10 @@
 // Memory Addresses (from KL25Z RM p.55)
 // =============================================
 #define WDOG_BASE    0x40052000  // Watchdog Timer
+#define PORTA_BASE   0x40049000  // PORT A Control
 #define PORTB_BASE   0x4004A000  // PORT B Control
 #define PORTC_BASE   0x4004B000  // PORT C Control
+#define GPIOA_BASE   0x400FF000  // GPIO A Data
 #define GPIOB_BASE   0x400FF040  // GPIO B Data
 #define GPIOC_BASE   0x400FF080  // GPIO C Data
 
@@ -39,9 +41,10 @@ typedef struct {
 // =============================================
 // Peripheral Instances
 // =============================================
-
+#define PORTA   ((PORT_Type*)PORTA_BASE)
 #define PORTB   ((PORT_Type*)PORTB_BASE)
 #define PORTC   ((PORT_Type*)PORTC_BASE)
+#define GPIOA   ((GPIO_Type*)GPIOA_BASE)
 #define GPIOB   ((GPIO_Type*)GPIOB_BASE)
 #define GPIOC   ((GPIO_Type*)GPIOC_BASE)
 
