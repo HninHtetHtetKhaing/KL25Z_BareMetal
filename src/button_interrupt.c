@@ -4,10 +4,16 @@
 	//button interrupt hendler
 void PORTA_IRQHandler(void)
 {
-	//interrupt flag must be cleard
-	//interrupt status flag register for PORT/GPIO
-	PORTA -> ISFR = 1 << 4;	// connect button to PTA4, clearing is here
-	GPIOB -> PTOR = 1 << 19;	// led toggle
+	
+	if(PORTA->ISFR & (1<<4)) {
+		PORTA -> ISFR = 1 << 4;
+		GPIOB -> PTOR = 1 << 19;
+	}
+	else {
+		PORTA -> ISFR = 1 << 5;
+		GPIOB -> PTOR = 1 << 18;
+	}
+
 }
 
 
