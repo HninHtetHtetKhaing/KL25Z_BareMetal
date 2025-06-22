@@ -46,6 +46,11 @@ typedef struct {
 
 // IRQ Numbers (KL25Z-specific)
 #define PORTA_IRQn 30  // IRQ number for PORTA
+typedef struct {
+    volatile uint32_t PCR[32];   // Offset 0x00
+    uint32_t _reserved[24];      // Padding (optional)
+    volatile uint32_t ISFR;      // Offset 0xA0 (Interrupt Status Flag)
+} PORT_Type;
 
 // =============================================
 // Peripheral Instances
