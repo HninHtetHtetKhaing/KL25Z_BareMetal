@@ -3,7 +3,7 @@ CC = arm-none-eabi-gcc
 CFLAGS = -mcpu=cortex-m0plus -O1 -Wall -Iinclude
 LDFLAGS = -T kl25z_linker.ld -nostdlib
 
-SRCS = src/main.c src/wdog.c
+SRCS = src/blinky.c src/wdog.c
 OBJS = $(SRCS:.c=.o)
 TARGET = firmware.elf
 
